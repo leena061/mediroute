@@ -1,0 +1,12 @@
+[
+  {"name": "Tribhuvan University Teaching Hospital", "type": "Specialist", "lat": 27.7333, "lng": 85.3306, "wait_time": 45},
+  {"name": "Bir Hospital", "type": "General", "lat": 27.7041, "lng": 85.3131, "wait_time": 40},
+  {"name": "Patan Hospital", "type": "General", "lat": 27.6667, "lng": 85.3167, "wait_time": 30},
+  {"name": "Norvic International Hospital", "type": "Specialist", "lat": 27.7167, "lng": 85.3167, "wait_time": 25},
+  {"name": "Grande International Hospital", "type": "Specialist", "lat": 27.7369, "lng": 85.3545, "wait_time": 20},
+  {"name": "Mediciti Hospital", "type": "General", "lat": 27.6833, "lng": 85.3167, "wait_time": 35},
+  {"name": "Nepal Medical College", "type": "Specialist", "lat": 27.7361, "lng": 85.3847, "wait_time": 30},
+  {"name": "Kathmandu Model Hospital", "type": "Clinic", "lat": 27.7167, "lng": 85.3000, "wait_time": 15},
+  {"name": "Om Hospital", "type": "General", "lat": 27.7089, "lng": 85.3147, "wait_time": 20},
+  {"name": "B&B Hospital", "type": "General", "lat": 27.6689, "lng": 85.3114, "wait_time": 25}
+]
