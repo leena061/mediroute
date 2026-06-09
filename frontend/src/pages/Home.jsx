@@ -5,99 +5,165 @@ const Home = () => {
   const { user } = useAuth();
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen bg-white">
 
-      {/* Hero */}
-      <div className="bg-white border-b border-gray-100">
-        <div className="max-w-6xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1">
-            <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
-              <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+      {/* ── HERO ── */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-teal-700 via-teal-600 to-cyan-500">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 right-20 w-72 h-72 bg-white rounded-full blur-3xl" />
+          <div className="absolute -bottom-10 left-10 w-96 h-96 bg-cyan-300 rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-6 py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          {/* Left */}
+          <div>
+            <span className="inline-flex items-center gap-2 text-xs font-bold text-teal-100 bg-white/15 border border-white/20 backdrop-blur px-4 py-2 rounded-full mb-8">
+              <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
               AI-Powered Medical Triage
-            </div>
-            <h1 className="text-5xl font-extrabold text-gray-900 leading-tight mb-4">
-              Know what's wrong.<br />
-              <span className="text-teal-600">Get there fast.</span>
+            </span>
+            <h1 className="text-5xl md:text-6xl font-extrabold text-white leading-[1.08] tracking-tight mb-6">
+              Know what's<br />wrong.{" "}
+              <span className="text-cyan-200">Get there</span><br />
+              <span className="text-cyan-200">fast.</span>
             </h1>
-            <p className="text-lg text-gray-500 mb-8 max-w-lg">
-              Describe your symptoms and MediRoute's ML model predicts your condition, assesses severity, and routes you to the right facility — instantly.
+            <p className="text-teal-100 leading-relaxed mb-10 max-w-md text-base">
+              Select your symptoms. Our ML model diagnoses your condition, rates severity, and routes you to the right hospital — all in under 2 seconds.
             </p>
-            <div className="flex gap-3 flex-wrap">
+            <div className="flex gap-4 flex-wrap">
               {user ? (
-                <Link to="/triage" className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3.5 rounded-xl font-bold text-base transition shadow-sm">
+                <Link to="/triage" className="bg-white text-teal-700 hover:bg-teal-50 font-extrabold rounded-2xl shadow-xl px-8 py-4 text-sm transition">
                   Start Triage →
                 </Link>
               ) : (
                 <>
-                  <Link to="/register" className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3.5 rounded-xl font-bold text-base transition shadow-sm">
-                    Get Started Free
+                  <Link to="/register" className="bg-white text-teal-700 hover:bg-teal-50 font-extrabold rounded-2xl shadow-xl px-8 py-4 text-sm transition">
+                    Get Started Free →
                   </Link>
-                  <Link to="/login" className="border border-gray-300 text-gray-700 hover:border-teal-500 hover:text-teal-600 px-8 py-3.5 rounded-xl font-bold text-base transition">
+                  <Link to="/login" className="text-white border-2 border-white/30 hover:border-white hover:bg-white/10 font-bold rounded-2xl px-8 py-4 text-sm transition">
                     Sign In
                   </Link>
                 </>
               )}
             </div>
+
+            {/* Trust line */}
+            <p className="text-teal-200/70 text-xs mt-8">
+              🔒 Not a substitute for professional medical advice
+            </p>
           </div>
 
-          {/* Stats card */}
-          <div className="flex-1 grid grid-cols-2 gap-4 w-full max-w-sm">
+          {/* Right — stat cards */}
+          <div className="grid grid-cols-2 gap-4">
             {[
-              { value: "97%", label: "Model Accuracy", color: "bg-emerald-50 text-emerald-700 border-emerald-200" },
-              { value: "41", label: "Diseases Covered", color: "bg-teal-50 text-teal-700 border-teal-200" },
-              { value: "132", label: "Symptom Inputs", color: "bg-violet-50 text-violet-700 border-violet-200" },
-              { value: "<2s", label: "Triage Time", color: "bg-amber-50 text-amber-700 border-amber-200" },
-            ].map((s) => (
-              <div key={s.label} className={`border rounded-2xl p-5 ${s.color}`}>
-                <p className="text-3xl font-extrabold">{s.value}</p>
-                <p className="text-sm font-medium mt-1 opacity-80">{s.label}</p>
+              { v: "97%",  l: "Model Accuracy",    icon: "🎯", bg: "bg-white/15", t: "text-white" },
+              { v: "41",   l: "Diseases Covered",  icon: "🧬", bg: "bg-white/15", t: "text-white" },
+              { v: "132",  l: "Symptoms Tracked",  icon: "📋", bg: "bg-white/15", t: "text-white" },
+              { v: "<2s",  l: "Triage Time",       icon: "⚡", bg: "bg-white/15", t: "text-white" },
+            ].map(s => (
+              <div key={s.l} className={`${s.bg} backdrop-blur border border-white/20 rounded-2xl p-6 hover:bg-white/25 transition`}>
+                <p className="text-2xl mb-2">{s.icon}</p>
+                <p className="text-4xl font-extrabold text-white">{s.v}</p>
+                <p className="text-sm font-semibold text-teal-100 mt-1">{s.l}</p>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* How it works */}
-      <div className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">How MediRoute works</h2>
-        <p className="text-gray-500 mb-10">Three steps from symptoms to the right care</p>
+      {/* ── HOW IT WORKS ── */}
+      <div className="max-w-7xl mx-auto px-6 py-20">
+        <div className="text-center mb-12">
+          <p className="text-xs font-bold text-teal-600 uppercase tracking-widest mb-3">How it works</p>
+          <h2 className="text-4xl font-extrabold text-slate-900">From symptoms to the right care</h2>
+          <p className="text-slate-500 mt-3 max-w-xl mx-auto">Three steps, under 2 seconds, no guesswork.</p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { icon: "📋", title: "Select Symptoms", desc: "Choose from 132 tracked symptoms using our smart search. The more you select, the more accurate the result.", color: "border-l-teal-500" },
-            { icon: "🧠", title: "AI Diagnosis", desc: "Random Forest model trained on 4,900+ cases predicts your condition with a confidence score and severity rating.", color: "border-l-emerald-500" },
-            { icon: "🗺️", title: "Hospital Routing", desc: "Facilities are filtered by your severity level and sorted by Haversine distance with live wait time estimates.", color: "border-l-violet-500" },
-          ].map((item) => (
-            <div key={item.title} className={`bg-white rounded-2xl p-6 border border-gray-100 border-l-4 ${item.color} shadow-sm`}>
-              <span className="text-3xl mb-4 block">{item.icon}</span>
-              <h3 className="font-bold text-gray-900 text-lg mb-2">{item.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+            {
+              n: "01", icon: "📋", t: "Select Symptoms",
+              d: "Choose from 132 tracked symptoms using smart search. More symptoms = higher confidence.",
+              accent: "from-teal-500 to-cyan-400", light: "bg-teal-50", border: "border-teal-100"
+            },
+            {
+              n: "02", icon: "🧠", t: "AI Diagnosis",
+              d: "Random Forest model trained on 4,900+ cases returns a disease prediction with confidence score.",
+              accent: "from-violet-500 to-purple-400", light: "bg-violet-50", border: "border-violet-100"
+            },
+            {
+              n: "03", icon: "🗺️", t: "Hospital Routing",
+              d: "Facilities filtered by severity, sorted by Haversine distance with live wait time estimates.",
+              accent: "from-amber-500 to-orange-400", light: "bg-amber-50", border: "border-amber-100"
+            },
+          ].map(item => (
+            <div key={item.n} className={`relative rounded-3xl border-2 ${item.border} ${item.light} p-8 hover:shadow-xl transition-all duration-300 group overflow-hidden`}>
+              <div className={`absolute top-0 left-0 h-1.5 w-full bg-gradient-to-r ${item.accent} rounded-t-3xl`} />
+              <span className="text-xs font-extrabold text-slate-300 tracking-widest block mb-4">{item.n}</span>
+              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
+              <h3 className="font-extrabold text-slate-900 text-lg mb-2">{item.t}</h3>
+              <p className="text-slate-500 text-sm leading-relaxed">{item.d}</p>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Severity guide */}
-      <div className="max-w-6xl mx-auto px-6 pb-16">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Severity Levels</h2>
-        <p className="text-gray-500 mb-6">MediRoute categorizes every diagnosis into one of three severity levels</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {[
-            { level: "Low", emoji: "🟢", desc: "Condition manageable at home or via a clinic visit. No immediate danger.", bg: "bg-emerald-50 border-emerald-200 text-emerald-800" },
-            { level: "Medium", emoji: "🟡", desc: "Requires medical attention within 24 hours. General hospital recommended.", bg: "bg-amber-50 border-amber-200 text-amber-800" },
-            { level: "High", emoji: "🔴", desc: "Urgent care needed. Specialist or emergency hospital prioritized.", bg: "bg-red-50 border-red-200 text-red-800" },
-          ].map((s) => (
-            <div key={s.level} className={`border rounded-2xl p-5 ${s.bg}`}>
-              <p className="text-2xl mb-2">{s.emoji}</p>
-              <p className="font-bold text-lg mb-1">{s.level} Severity</p>
-              <p className="text-sm opacity-80">{s.desc}</p>
-            </div>
-          ))}
+      {/* ── SEVERITY GUIDE ── */}
+      <div className="bg-slate-50 border-y border-slate-100">
+        <div className="max-w-7xl mx-auto px-6 py-20">
+          <div className="text-center mb-12">
+            <p className="text-xs font-bold text-teal-600 uppercase tracking-widest mb-3">Severity levels</p>
+            <h2 className="text-4xl font-extrabold text-slate-900">What your result means</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                l: "Low Severity", e: "🟢", dot: "bg-emerald-500",
+                d: "Manageable at home or a quick clinic visit. No immediate danger detected.",
+                bg: "bg-white border-emerald-200", t: "text-emerald-700",
+                badge: "bg-emerald-100 text-emerald-700"
+              },
+              {
+                l: "Medium Severity", e: "🟡", dot: "bg-amber-400",
+                d: "Needs medical attention within 24 hours. General hospital recommended.",
+                bg: "bg-white border-amber-200", t: "text-amber-700",
+                badge: "bg-amber-100 text-amber-700"
+              },
+              {
+                l: "High Severity", e: "🔴", dot: "bg-red-500",
+                d: "Urgent care needed. Specialist or emergency hospital prioritised immediately.",
+                bg: "bg-white border-red-200", t: "text-red-700",
+                badge: "bg-red-100 text-red-700"
+              },
+            ].map(s => (
+              <div key={s.l} className={`rounded-3xl border-2 ${s.bg} p-8 hover:shadow-lg transition`}>
+                <div className={`inline-flex items-center gap-2 ${s.badge} font-bold text-sm px-4 py-2 rounded-full mb-5`}>
+                  <span className={`w-2.5 h-2.5 rounded-full ${s.dot}`} />
+                  {s.l}
+                </div>
+                <p className="text-slate-600 text-sm leading-relaxed">{s.d}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Footer */}
-      <div className="border-t border-gray-100 bg-white py-6 text-center text-gray-400 text-sm">
-        MediRoute · FastAPI · React · scikit-learn · Not a substitute for professional medical advice
+      {/* ── CTA BANNER ── */}
+      {!user && (
+        <div className="bg-gradient-to-r from-teal-700 via-teal-600 to-cyan-600">
+          <div className="max-w-3xl mx-auto px-6 py-16 text-center">
+            <h2 className="text-4xl font-extrabold text-white mb-4">Ready to find out what's wrong?</h2>
+            <p className="text-teal-100 mb-8 text-base">Free to use. No credit card. Results in seconds.</p>
+            <Link to="/register" className="inline-block bg-white text-teal-700 hover:bg-teal-50 font-extrabold rounded-2xl shadow-xl px-10 py-4 text-base transition">
+              Create Free Account →
+            </Link>
+          </div>
+        </div>
+      )}
+
+      {/* ── FOOTER ── */}
+      <div className="bg-slate-900 py-6 text-center text-slate-500 text-xs">
+        <span className="text-slate-400 font-semibold">MediRoute</span> · Built with FastAPI, React & scikit-learn ·{" "}
+        <span className="text-slate-600">Not a substitute for medical advice</span>
       </div>
     </div>
   );
