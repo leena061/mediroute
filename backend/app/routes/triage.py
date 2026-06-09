@@ -57,6 +57,7 @@ def predict(
         "predicted_disease": result["predicted_disease"],
         "severity": result["severity"],
         "top_reasons": result["top_reasons"],
+        "confidence": result["confidence"],
         "nearby_facilities": []
     }
 

@@ -8,5 +8,8 @@
   {"name": "Nepal Medical College", "type": "Specialist", "lat": 27.7361, "lng": 85.3847, "wait_time": 30},
   {"name": "Kathmandu Model Hospital", "type": "Clinic", "lat": 27.7167, "lng": 85.3000, "wait_time": 15},
   {"name": "Om Hospital", "type": "General", "lat": 27.7089, "lng": 85.3147, "wait_time": 20},
-  {"name": "B&B Hospital", "type": "General", "lat": 27.6689, "lng": 85.3114, "wait_time": 25}
+  {"name": "B&B Hospital", "type": "General", "lat": 27.6689, "lng": 85.3114, "wait_time": 25},
+  {"name": "Silchar Medical College", "type": "General", "lat": 24.8333, "lng": 92.7789, "wait_time": 30},
+  {"name": "Cachar Cancer Hospital", "type": "Specialist", "lat": 24.8219, "lng": 92.7617, "wait_time": 40},
+  {"name": "Tribeni Clinic", "type": "Clinic", "lat": 24.8271, "lng": 92.7632, "wait_time": 15}
 ]

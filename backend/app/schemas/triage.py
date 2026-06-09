@@ -9,6 +9,7 @@ class TriageResponse(BaseModel):
     predicted_disease: str
     severity: str
     top_reasons: List[str]
+    confidence: float
     nearby_facilities: List[dict]
 
 class TriageHistoryResponse(BaseModel):

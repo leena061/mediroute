@@ -74,6 +74,10 @@ def predict_disease(symptoms: list):
     predicted_disease = le.inverse_transform([prediction_enc])[0]
     severity = SEVERITY_MAP.get(predicted_disease, "Medium")
 
+    # Confidence score
+    proba = rf_model.predict_proba([input_vector])[0]
+    confidence = round(float(proba[prediction_enc]) * 100, 1)
+
     # Top reasons — feature importances for matched symptoms
     importances = rf_model.feature_importances_
     symptom_scores = {
@@ -87,5 +91,6 @@ def predict_disease(symptoms: list):
     return {
         "predicted_disease": predicted_disease,
         "severity": severity,
+        "confidence": confidence,
         "top_reasons": top_reasons_clean
     }
